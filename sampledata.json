@@ -327,50 +327,50 @@
                         {
                             "name": "Production of website based on HTML/CSS (50%)",
                             "size": 50
+                        }
+                    ]
+                },
+                {
+                    "name": "Learning Resources",
+                    "size": 20,
+                    "children": [
+                        {
+                            "name": "Krug S (2005) Don't Make Me Think!: A Common Sense Approach to Web Usability. 2nd ed. New Riders.",
+                            "size": 20
                         },
                         {
-                            "name": "Learning Resources",
-                            "size": 20,
-                            "children": [
-                                {
-                                    "name": "Krug S (2005) Don't Make Me Think!: A Common Sense Approach to Web Usability. 2nd ed. New Riders.",
-                                    "size": 20
-                                },
-                                {
-                                    "name": "Lawson, Bruce (2010) Introducing HTML 5. 1st ed. New Riders.",
-                                    "size": 20
-                                },
-                                {
-                                    "name": "McFarland, David Sawyer (2009) CSS: The Missing Manual. 2nd ed. Pogue Press.",
-                                    "size": 20
-                                },
-                                {
-                                    "name": "Osborn, Jeremy and AGI Creative Team (2010) Dreamweaver CS5 Digital Classroom. John Wiley & Sons.",
-                                    "size": 20
-                                },
-                                {
-                                    "name": "Robbins JN (2007) Learning Web Design: A Beginner's Guide to (X)HTML, StyleSheets, and Web Graphics. 3rd ed. O'Reilly.",
-                                    "size": 20
-                                },
-                                {
-                                    "name": "Robson, Elisabeth (2012) Head First HTML. 2nd ed. O'Reilly Media.",
-                                    "size": 20
-                                },
-                                {
-                                    "name": "Teague, Jason Cranford (2010) CSS3: Visual QuickStart Guide. 5th ed. Peachpit Press.",
-                                    "size": 20
-                                }
-                            ]
+                            "name": "Lawson, Bruce (2010) Introducing HTML 5. 1st ed. New Riders.",
+                            "size": 20
                         },
                         {
-                            "name": "Feedback to Students",
-                            "size": 20,
-                            "children": [
-                                {
-                                    "name": "Feedback on formative assessment will be given in class. Feedback on summative assessment work will normally be available within two weeks of the hand-in date and no later than three weeks.",
-                                    "size": 20
-                                }
-                            ]
+                            "name": "McFarland, David Sawyer (2009) CSS: The Missing Manual. 2nd ed. Pogue Press.",
+                            "size": 20
+                        },
+                        {
+                            "name": "Osborn, Jeremy and AGI Creative Team (2010) Dreamweaver CS5 Digital Classroom. John Wiley & Sons.",
+                            "size": 20
+                        },
+                        {
+                            "name": "Robbins JN (2007) Learning Web Design: A Beginner's Guide to (X)HTML, StyleSheets, and Web Graphics. 3rd ed. O'Reilly.",
+                            "size": 20
+                        },
+                        {
+                            "name": "Robson, Elisabeth (2012) Head First HTML. 2nd ed. O'Reilly Media.",
+                            "size": 20
+                        },
+                        {
+                            "name": "Teague, Jason Cranford (2010) CSS3: Visual QuickStart Guide. 5th ed. Peachpit Press.",
+                            "size": 20
+                        }
+                    ]
+                },
+                {
+                    "name": "Feedback to Students",
+                    "size": 20,
+                    "children": [
+                        {
+                            "name": "Feedback on formative assessment will be given in class. Feedback on summative assessment work will normally be available within two weeks of the hand-in date and no later than three weeks.",
+                            "size": 20
                         }
                     ]
                 }
