@@ -74,103 +74,103 @@ class Module:
 def parseJson(module):
     #translate the module data into a json string portion
     module_json
-    module_json += '{"name": "' + module.id + '","size": 20,"children": ['
-    module_json += '{"name":"' + module.title + '","size": 20},'
-    module_json += '{"name": "details:","size": 20,"children": ['
-    module_json += '{"name": "Credits: ' + module.credits + '","size": ' + module.credits + '},'
-    module_json += '{"name": "Level: ' + module.level + '","size": 20},'
-    module_json += '{"name": "Type: ' + module.type + '","size": 20},'
-    module_json += '{"name": "Duration: ' + module.duration + '","size": ' + (module.duration * 10) + '},'
-    module_json += '{"name": "Trimester 3?: ' + module.trim3 + '","size": 20},'
-    module_json += '{"name": "ECTS: ' + module.ects + '","size": ' + module.ects + '},'
-    module_json += '{"name": "Marking Scheme: ' + module.marking + '","size": 100},'
-    module_json += '{"name": "Pass Mark: ' + module.pass_mark + '","size": ' + module.pass_mark + '}'
-    module_json += ']},'
-    module_json += '{"name": "Delivery Type","size": 20,"children": ['
-    module_json += '{"name": "' + module.delivery_type + '","size": 20}]},'
-    module_json += '{"name": "Pre-Requisites","size": 20,"children": ['
-    module_json += '{"name": "' + module.pre_requisites + '","size": 20}'
-    module_json += ']},'
-    module_json += '{"name": "Co-Requisites","size": 20,"children": ['
-    module_json += '{"name": "' + module.co_requisites + '","size": 20}'
-    module_json += ']},'
-    module_json += '{"name": "Barred Combinations","size": 20,"children": ['
-    module_json += '{"name": "' + module.barred_combinations + '","size": 20}'
-    module_json += ']},'
-    module_json += '{"name": "Module Outline","size": 20,"children": ['
-    module_json += '{"name": "'+ module.outline + '","size": 20}'
-    module_json += ']},'
-    module_json += '{"name": "Indicative Content","size": 20,"children": ['
+    module_json += '''{"name": "''' + module.id + '''","size": 20,"children": ['''
+    module_json += '''{"name":"''' + module.title + '''","size": 20},'''
+    module_json += '''{"name": "details:","size": 20,"children": ['''
+    module_json += '''{"name": "Credits: ''' + module.credits + '''","size": ''' + module.credits + '''},'''
+    module_json += '''{"name": "Level: ''' + module.level + '''","size": 20},'''
+    module_json += '''{"name": "Type: ''' + module.type + '''","size": 20},'''
+    module_json += '''{"name": "Duration: ''' + module.duration + '''","size": ''' + (module.duration * 10) + '''},'''
+    module_json += '''{"name": "Trimester 3?: ''' + module.trim3 + '''","size": 20},'''
+    module_json += '''{"name": "ECTS: ''' + module.ects + '''","size": ''' + module.ects + '''},'''
+    module_json += '''{"name": "Marking Scheme: ''' + module.marking + '''","size": 100},'''
+    module_json += '''{"name": "Pass Mark: ''' + module.pass_mark + '''","size": ''' + module.pass_mark + '''}'''
+    module_json += ''']},'''
+    module_json += '''{"name": "Delivery Type","size": 20,"children": ['''
+    module_json += '''{"name": "''' + module.delivery_type + '''","size": 20}]},'''
+    module_json += '''{"name": "Pre-Requisites","size": 20,"children": ['''
+    module_json += '''{"name": "''' + module.pre_requisites + '''","size": 20}'''
+    module_json += ''']},'''
+    module_json += '''{"name": "Co-Requisites","size": 20,"children": ['''
+    module_json += '''{"name": "''' + module.co_requisites + '''","size": 20}'''
+    module_json += ''']},'''
+    module_json += '''{"name": "Barred Combinations","size": 20,"children": ['''
+    module_json += '''{"name": "''' + module.barred_combinations + '''","size": 20}'''
+    module_json += ''']},'''
+    module_json += '''{"name": "Module Outline","size": 20,"children": ['''
+    module_json += '''{"name": "'''+ module.outline + '''","size": 20}'''
+    module_json += ''']},'''
+    module_json += '''{"name": "Indicative Content","size": 20,"children": ['''
     #loop to insert all indicative content items
     idicatives = module.indicative_content.xpath('//td/text()')
     #only insert tds that are text, not just a number
     for indicative in indicatives:
         #if indicative is not just a number:
         if re.match("^[0-9 ]+$", indicative) is False:
-            module_json += '{"name": "' + indicative + '","size": 20},'
-            module_json += ']},'
+            module_json += '''{"name": "''' + indicative + '''","size": 20},'''
+            module_json += ''']},'''
             #remove trailing comma on last indicative
 
-    module_json += '{"name": "Learning Outcomes","size": 20,"children": ['
+    module_json += '''{"name": "Learning Outcomes","size": 20,"children": ['''
     #loop to insert all learning outcome items
     outcomes = module.learning_outcomes.xpath('//td/text()')
     #only insert tds that are text, not just a number
     for outcome in outcomes:
         #if outcome is not just a number:
         if re.match("^[0-9 ]+$", outcome) is False:
-            module_json += '{"name": "' + outcome + '","size": 20},'
-            module_json += ']},'
+            module_json += '''{"name": "''' + outcome + '''","size": 20},'''
+            module_json += ''']},'''
             #remove trailing comma on last outcome
-    module_json += ']},'
-    module_json += '{"name": "Learning And Teaching Strategy","size": 20,"children": ['
-    module_json += '{"name": "' + module.learning_and_teaching_strategy + '","size": 20},'
-    module_json += '{"name": "Learning & Teaching Methods","size": 20,"children": ['
-    module_json += '{"name": "Hours","size": 20,"children": ['
-    hours = module.learning_and_teaching_methods.xpath('//td/text()')
+    module_json += ''']},'''
+    module_json += '''{"name": "Learning And Teaching Strategy","size": 20,"children": ['''
+    module_json += '''{"name": "''' + module.learning_and_teaching_strategy + '''","size": 20},'''
+    module_json += '''{"name": "Learning & Teaching Methods","size": 20,"children": ['''
+    module_json += '''{"name": "Hours","size": 20,"children": ['''
+    hours = module.learning_and_teaching_methods.xpath('''//td/text()''')
     scheduled = hours[2]
     independant =  hours[5]
-    module_json += '{"name": "' + scheduled + ' scheduled","size": ' + scheduled + '},'
-    module_json += '{"name": "' + independant + ' independant","size": ' + independant + '}'
-    module_json += ']},'
-    module_json += '{"name": "Formative Assessment Strategy","size": 20,"children": ['
-    module_json += '{"name": "' + module.formative_assessment_strategy + '","size": 20}'
-    module_json += ']},'
-    module_json += '{"name": "Summative Assessment Strategy","size": 20,"children": ['
-    module_json += '{"name": "' + module.summative_assessment_strategy + '","size": 20}'
-    module_json += ']},'
-    module_json += '{"name": "Summative Assessments","size": 20,"children": ['
+    module_json += '''{"name": "''' + scheduled + ''' scheduled","size": ''' + scheduled + '''},'''
+    module_json += '''{"name": "''' + independant + ''' independant","size": ''' + independant + '''}'''
+    module_json += ''']},'''
+    module_json += '''{"name": "Formative Assessment Strategy","size": 20,"children": ['''
+    module_json += '''{"name": "''' + module.formative_assessment_strategy + '''","size": 20}'''
+    module_json += ''']},'''
+    module_json += '''{"name": "Summative Assessment Strategy","size": 20,"children": ['''
+    module_json += '''{"name": "''' + module.summative_assessment_strategy + '''","size": 20}'''
+    module_json += ''']},'''
+    module_json += '''{"name": "Summative Assessments","size": 20,"children": ['''
     #loop to add all summative assessment items
-    summative_rows = module.summative_assessments.xpath('//tr/text()')
+    summative_rows = module.summative_assessments.xpath('''//tr/text()''')
     for row in summative_rows:
         summatives = row.xpath('//td/text()')
         #add summative details
         #KIS
-        module_json += '{"name": "' + summatives[2] + '","size": 20'
+        module_json += '''{"name": "''' + summatives[2] + '''","size": 20'''
         #Description
-        module_json += '{"name": "' + summatives[3] + '","size": 20'
+        module_json += '''{"name": "''' + summatives[3] + '''","size": 20'''
         #Learning Outcomes
-        module_json += '{"name": "' + summatives[4] + '","size": 20'
+        module_json += '''{"name": "''' + summatives[4] + '''","size": 20'''
         #Marking Scheme
-        module_json += '{"name": "' + summatives[5] + '","size": 20'
+        module_json += '''{"name": "''' + summatives[5] + '''","size": 20'''
         #Passmark
-        module_json += '{"name": "' + summatives[6] + '","size": ' + summatives[6]
+        module_json += '''{"name": "''' + summatives[6] + '''","size": ''' + summatives[6]
         #KIS Weighting
-        module_json += '{"name": "' + summatives[7] + '","size": 20'
-        module_json += ']},'
+        module_json += '''{"name": "''' + summatives[7] + '''","size": 20'''
+        module_json += ''']},'''
         #remove trailing comma on last summative
-    module_json += ']},'
-    module_json += '{"name": "Learning Resources","size": 20,"children": ['
+    module_json += ''']},'''
+    module_json += '''{"name": "Learning Resources","size": 20,"children": ['''
     #loop to add all learning resources
     resources = module.learning_resources.xpath('//td/text()')
     for resource in resources:
-        module_json += '{"name": "' + resource + '","size": 20},'
-        module_json += ']},'
+        module_json += '''{"name": "''' + resource + '''","size": 20},'''
+        module_json += ''']},'''
     #remove trailing comma on last resource
 
-    module_json += ']},'
-    module_json += '{"name": "Feedback to Students","size": 20,"children": ['
-    module_json += '{"name": "' + module.student_feedback + '","size": 20}'
-    module_json += ']}]}]}'
+    module_json += ''']},'''
+    module_json += '''{"name": "Feedback to Students","size": 20,"children": ['''
+    module_json += '''{"name": "''' + module.student_feedback + '''","size": 20}'''
+    module_json += ''']}]}]}'''
     return module_json
 
 #course title
@@ -180,7 +180,7 @@ course_title = "Computing & Website Development HND/BSc (Hons)"
 modules = ["CPU4000","CPU4003","CPU4005","CPU4001","CPU4002","CPU4004","CPU5001","CPU5002","CPU5003","CPU5000","CPU5004","CPU5005","CPU6000","CPU6001","CPU6002","CPU6004","CPU6003","CPU6005"]
 
 #stitch together json modules under a root "course name" node
-json_string = '{"name":' + course title + '","children":['
+json_string = '''{"name":''' + course_title + '''","children":['''
 
 #add a json string for each module in this course
 for module_code in module_codes:
