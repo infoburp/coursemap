@@ -1,4 +1,5 @@
 import json
+import lxml
 from lxml import html
 import requests
 
