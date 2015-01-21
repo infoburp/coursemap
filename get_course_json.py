@@ -70,8 +70,8 @@ class Module:
 
 def parse_json(module):
     #translate the module data into a json string portion
-    module_json = '''{"name": "''' + module.id + '''","size": 20,"children": ['''
-    module_json += '''{"name":"''' + module.title + '''","size": 60},'''
+    module_json = '''{"name": "''' + module.title + '''","size": 20,"children": ['''
+    module_json += '''{"name":"''' + module.id + '''","size": 60},'''
     module_json += '''{"name": "Details","size": 20,"children": ['''
     module_json += '''{"name": "Credits:''' + module.credits + '''","size": ''' + module.credits + '''},'''
     module_json += '''{"name": "Level:''' + module.level + '''","size": 20},'''
