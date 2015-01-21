@@ -186,3 +186,7 @@ json_string += "]}"
 
 #print the json string
 print(json_string)
+
+#write the json to a file
+with open('course.json', 'w') as file_:
+    file_.write(json_string)
