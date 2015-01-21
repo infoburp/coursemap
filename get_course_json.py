@@ -2,6 +2,7 @@ import json
 import lxml
 from lxml import html
 import requests
+import re
 
 class Module:
     def __init__(self, module_id):
@@ -187,6 +188,7 @@ json_string += "]}"
 #remove invalid chars
 out = ''.join([x for x in json_string if ord(x) < 128])
 out = out.rstrip('\r\n')
+out = re.sub( '\s+', ' ', out ).strip()
 
 #print the json string
 print(json_string)
