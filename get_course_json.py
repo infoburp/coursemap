@@ -1,7 +1,6 @@
 import json
 import lxml
 from lxml import html
-from unidecode import unidecode
 import requests
 
 class Module:
