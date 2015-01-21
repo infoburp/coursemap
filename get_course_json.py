@@ -15,11 +15,6 @@ class Module:
         #extract the relevant data, adding it to the Module object
         #module id
         self.id = module_id
-        #form url for module html page
-        self.url = url
-        #get module html page
-        page = requests.get(module)
-        tree = html.fromstring(page.text)
         paragraphs = tree.xpath('//p/text()')
         header4s = tree.xpath('//h4/text()')
         dds = tree.xpath('//dd/text()')
