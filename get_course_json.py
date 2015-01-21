@@ -71,7 +71,7 @@ class Module:
         #Feedback to Students
         self.student_feedback = paragraphs[10]
 
-def parseJson(module):
+def parse_json(module):
     #translate the module data into a json string portion
     module_json
     module_json += '''{"name": "''' + module.id + '''","size": 20,"children": ['''
