@@ -185,12 +185,12 @@ for module_code in module_codes:
 #close the json string
 json_string += "]}"
 
+#remove invalid chars
+out = ''.join([x for x in json_string if ord(x) < 128])
+
 #print the json string
 print(json_string)
 
-string_for_output = json_string.encode('utf8', 'replace')
-
-str_out =unidecode(u string_for_output)
 #write the json to a file
 with open('sampledata.json', 'w') as file_:
-    file_.write(str_out)
+    file_.write(out)
