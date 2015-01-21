@@ -79,7 +79,7 @@ def parse_json(module):
     module_json += '''{"name": "Trimester 3?: ''' + module.trim3 + '''","size": 20},'''
     module_json += '''{"name": "ECTS: ''' + module.ects + '''","size": ''' + module.ects + '''},'''
     module_json += '''{"name": "Marking Scheme: ''' + module.marking + '''","size": 100},'''
-    module_json += '''{"name": "Pass Mark: ''' + module.pass_mark + '''","size": ''' + module.pass_mark + '''}'''
+    module_json += '''{"name": "Pass Mark: ''' + module.pass_mark + '''","size": 20}'''
     module_json += ''']},'''
     module_json += '''{"name": "Delivery Type","size": 20,"children": ['''
     module_json += '''{"name": "''' + module.delivery_type + '''","size": 20}]},'''
