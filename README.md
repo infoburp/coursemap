@@ -18,7 +18,7 @@ sudo apt-get install python && sudo apt-get install pip && sudo pip install lxml
 
 Or if you're really lazy try:
 
-sudo apt-get install git && git clone https://github.com/infoburp/coursemap && cd coursemap && sudo apt-get install python && sudo apt-get install pip && sudo pip install lxml && sudo pip install requests && python get_course_json.py > course.json
+sudo apt-get install git && git clone https://github.com/infoburp/coursemap && cd coursemap && sudo apt-get install python && sudo apt-get install pip && sudo apt-get install libxml2-dev libxslt1-dev python-dev && sudo pip install lxml && sudo pip install requests && python get_course_json.py > course.json
 
 Then edit get_course_json.py to include the modules you want to load in the modules array and run:
 
