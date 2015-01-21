@@ -131,14 +131,14 @@ def parseJson(module):
     module_json += '{"name": "' + module.id + '","size": 20,"children": ['
     module_json += '{"name":"' + module.title + '","size": 20},'
     module_json += '{"name": "details:","size": 20,"children": ['
-    module_json += '{"name": "Credits: ' + module.credits + '","size": ' + module.credits},
-    module_json += '{"name": "Level: ' + module.level + '","size": 20},
-    module_json += '{"name": "Type: ' + module.type + '","size": 20},
+    module_json += '{"name": "Credits: ' + module.credits + '","size": ' + module.credits + '},'
+    module_json += '{"name": "Level: ' + module.level + '","size": 20},'
+    module_json += '{"name": "Type: ' + module.type + '","size": 20},'
     module_json += '{"name": "Duration: ' + module.duration + '","size": ' + (module.duration * 10) + '},'
-    module_json += '{"name": "Trimester 3?: ' + module.trim3 + '","size": 20},
-    module_json += '{"name": "ECTS: ' + module.ects + '","size": 20},
-    module_json += '{"name": "Marking Scheme: ' + module.marking + '","size": 100},
-    module_json += '{"name": "Pass Mark: ' + module.pass_mark + '","size": 40}
+    module_json += '{"name": "Trimester 3?: ' + module.trim3 + '","size": 20},'
+    module_json += '{"name": "ECTS: ' + module.ects + '","size": ' + module.ects + '},'
+    module_json += '{"name": "Marking Scheme: ' + module.marking + '","size": 100},'
+    module_json += '{"name": "Pass Mark: ' + module.pass_mark + '","size": ' + module.pass_mark + '}'
     module_json += ']},'
     module_json += '{"name": "Delivery Type","size": 20,"children": ['
     module_json += '{"name": "' + module.delivery_type + '","size": 20}]},'
@@ -146,13 +146,13 @@ def parseJson(module):
     module_json += '{"name": "' + module.pre_requisites + '","size": 20}'
     module_json += ']},'
     module_json += '{"name": "Co-Requisites","size": 20,"children": ['
-    module_json += '{"name": "' + module.co_requisites + '","size": 20}
+    module_json += '{"name": "' + module.co_requisites + '","size": 20}'
     module_json += ']},'
     module_json += '{"name": "Barred Combinations","size": 20,"children": ['
     module_json += '{"name": "' + module.barred_combinations + '","size": 20}'
     module_json += ']},'
     module_json += '{"name": "Module Outline","size": 20,"children": ['
-    module_json += '{"name": "'+ module.outline + '","size": 20}
+    module_json += '{"name": "'+ module.outline + '","size": 20}'
     module_json += ']},'
     module_json += '{"name": "Indicative Content","size": 20,"children": ['
     #loop to insert all indicative content items
@@ -163,27 +163,26 @@ def parseJson(module):
             module_json += '{"name": "' + indicative + '","size": 20},'
             module_json += ']},'
             #remove trailing comma on last indicative
-            
+
     module_json += '{"name": "Learning Outcomes","size": 20,"children": ['
     #loop to insert all learning outcome items
-                            #{
-                            #    "name": "display knowledge and understanding of Internet structure, applications and services.",
-                            #    "size": 20
-                            #},
+    outcomes = module.learning_outcomes.xpath('//td/text()')
+    #only insert tds that are text, not just a number
+    for outcome in outcomes:
+        if outcome #is not just a number:
+            module_json += '{"name": "' + outcome + '","size": 20},'
+            module_json += ']},'
+            #remove trailing comma on last outcome
     module_json += ']},'
     module_json += '{"name": "Learning And Teaching Strategy","size": 20,"children": ['
-    module_json += '{"name": "A blended learning approach is used in the module which means that you will attend sessions face-to-face and also use online learning. You will attend lectures, seminars and tutorials so that you learn the theoretical content and also have demonstrations and practical hands-on sessions so that you can develop and practice the skills needed to devise your own website. There will also be online sources and activities so that you can explore topics of interest and have online discussions with peers and your tutor. You will also use the internet-based applications to conduct advanced searches. You will also use the internet to find appropriate websites to evaluate prior to creating your own website.",
-                                "size": 20},
+    module_json += '{"name": "' + module.learning_and_teaching_strategy + '","size": 20},'
     module_json += '{"name": "Learning & Teaching Methods","size": 20,"children": ['
     module_json += '{"name": "Hours","size": 20,"children": ['
-                                            {
-                                                "name": "67.5 scheduled",
-                                                "size": 67.5
-                                            },
-                                            {
-                                                "name": "132.5 independant",
-                                                "size": 132.5
-                                            }
+    hours = module.learning_and_teaching_methods.xpath('//td/text()')
+    scheduled = hours[2]
+    independant =  hours[5]
+    module_json += '{"name": "' + scheduled + ' scheduled","size": ' + scheduled + '},'
+    module_json += '{"name": "' + independant + ' independant","size": ' + independant + '}'
     module_json += ']},'
     module_json += '{"name": "Formative Assessment Strategy","size": 20,"children": ['
     module_json += '{"name": "' + module.formative_assessment_strategy + '","size": 20}'
@@ -192,20 +191,33 @@ def parseJson(module):
     module_json += '{"name": "' + module.summative_assessment_strategy + '","size": 20}'
     module_json += ']},'
     module_json += '{"name": "Summative Assessments","size": 20,"children": ['
-                        #loop to add all summative assessment items
-                            #{
-                            #    "name": "Case study report (50%)",
-                            #    "size": 50
-                            #},
-
+    #loop to add all summative assessment items
+    summative_rows = module.summative_assessments.xpath('//tr/text()')
+    for row in summative_rows:
+        summatives = row.xpath('//td/text()')
+        #add summative details
+        #KIS
+        module_json += '{"name": "' + summatives[2] + '","size": 20'
+        #Description
+        module_json += '{"name": "' + summatives[3] + '","size": 20'
+        #Learning Outcomes
+        module_json += '{"name": "' + summatives[4] + '","size": 20'
+        #Marking Scheme
+        module_json += '{"name": "' + summatives[5] + '","size": 20'
+        #Passmark
+        module_json += '{"name": "' + summatives[6] + '","size": ' + summatives[6]
+        #KIS Weighting
+        module_json += '{"name": "' + summatives[7] + '","size": 20'
+        module_json += ']},'
+        #remove trailing comma on last summative
     module_json += ']},'
     module_json += '{"name": "Learning Resources","size": 20,"children": ['
-                                #loop to add all learning resources
-                                    #{
-                                    #    "name": "Krug S (2005) Don't Make Me Think!: A Common Sense Approach to Web Usability. 2nd ed. New Riders.",
-                                    #    "size": 20
-                                    #},
-
+    #loop to add all learning resources
+    resources = module.learning_resources.xpath('//td/text()')
+    for resource in resources:
+        module_json += '{"name": "' + resource + '","size": 20},'
+        module_json += ']},'
+    #remove trailing comma on last resource
     module_json += ']},'
     module_json += '{"name": "Feedback to Students","size": 20,"children": ['
     module_json += '{"name": "' + module.student_feedback + '","size": 20}'
