@@ -3,131 +3,77 @@ from lxml import html
 import requests
 
 class Module:
-    #module id
-    str id
-    #form url for module html page
-    str url = "https://modules.bolton.ac.uk/" + id
-    #module title
-    str title
-    #Credits
-    str credits
-    #Level
-    str level
-    #Type
-    str type
-    #Duration
-    str duration
-    #Trimester 3?
-    str trim3
-    #ECTS
-    str ects
-    #Marking Scheme
-    str marking
-    #Pass Mark
-    str pass_mark
-    #Delivery Type
-    str delivery_type
-    #Pre-Requisites
-    str pre_requisites
-    #Co-Requisites
-    str co_requisites
-    #Barred Combinations
-    str barred_combinations
-    #Module Outline
-    str outline
-    #Indicative Content
-    str indicative_content
-    #Learning Outcomes
-    str learning_outcomes
-    #Learning And Teaching Strategy
-    str learning_and_teaching_strategy
-    #Learning & Teaching Methods
-    str learning_and_teaching_methods
-    #Formative Assessment Strategy
-    str formative_assessment_strategy
-    #Summative Assessment Strategy
-    str summative_assessment_strategy
-    #Summative Assessments
-    str summative_assessments
-    #Learning Resources
-    str learning_resources
-    #Feedback to Students
-    str student_feedback
-
-def module_get(module_id):
-    #download the data for this module and insert it into the relevant fields, returning a Module object
-    #create the Module object ready for population
-    Module module
-    #calculate the module detail url
-    str url = "https://modules.bolton.ac.uk/" + module_id
-    #get the html page at url
-    page = requests.get(url)
-    #parse the html into a tree
-    tree = html.fromstring(page.text)
-    #extract the relevant data, adding it to the Module object
-    #module id
-    module.id = module_id
-    #form url for module html page
-    module.url = url
-    #get module html page
-    page = requests.get(module)
-    tree = html.fromstring(page.text)
-    paragraphs = tree.xpath('//p/text()')
-    header4s = tree.xpath('//h4/text()')
-    dds = tree.xpath('//dd/text()')
-    tables = tree.xpath('//table/text()')
-    #module title
-    module.title = header4s[0]
-    #Credits
-    module.credits = dds[0]
-    #Level
-    module.level = dds[1]
-    #Type
-    module.type = dds[2]
-    #Duration
-    module.duration = dds[3]
-    #Trimester 3?
-    module.trim3 = dds[4]
-    #ECTS
-    module.ects = dds[5]
-    #Marking Scheme
-    module.marking = dds[6]
-    #Pass Mark
-    module.pass_mark = paragraphs[0]
-    #Delivery Type
-    module.delivery_type = paragraphs[1]
-    #Pre-Requisites
-    module.pre_requisites = paragraphs[2]
-    #Co-Requisites
-    module.co_requisites = paragraphs[3]
-    #Barred Combinations
-    module.barred_combinations = paragraphs[4]
-    #Module Outline
-    module.outline = paragraphs[5] + "  " + paragraphs[6]
-    #Indicative Content
-    module.indicative_content = tables[0]
-    #Learning Outcomes
-    module.learning_outcomes = tables[1]
-    #Learning And Teaching Strategy
-    module.learning_and_teaching_strategy = paragraphs[7]
-    #Learning & Teaching Methods
-    module.learning_and_teaching_methods = tables[2]
-    #Formative Assessment Strategy
-    module.formative_assessment_strategy = paragraphs[8]
-    #Summative Assessment Strategy
-    module.summative_assessment_strategy = paragraphs[9]
-    #Summative Assessments
-    module.summative_assessments = tables[3]
-    #Learning Resources
-    module.learning_resources = tables[4]
-    #Feedback to Students
-    module.student_feedback = paragraphs[10]
-    #return the Module object
-    return module
+    def __init__(self, module_id):
+        self.module_id = module_id    # instance variable unique to each instance
+        #download the data for this module and insert it into the relevant fields, returning a Module object
+        #calculate the module detail url
+        url = "https://modules.bolton.ac.uk/" + module_id
+        #get the html page at url
+        page = requests.get(url)
+        #parse the html into a tree
+        tree = html.fromstring(page.text)
+        #extract the relevant data, adding it to the Module object
+        #module id
+        self.id = module_id
+        #form url for module html page
+        self.url = url
+        #get module html page
+        page = requests.get(module)
+        tree = html.fromstring(page.text)
+        paragraphs = tree.xpath('//p/text()')
+        header4s = tree.xpath('//h4/text()')
+        dds = tree.xpath('//dd/text()')
+        tables = tree.xpath('//table/text()')
+        #module title
+        self.title = header4s[0]
+        #Credits
+        self.credits = dds[0]
+        #Level
+        self.level = dds[1]
+        #Type
+        self.type = dds[2]
+        #Duration
+        self.duration = dds[3]
+        #Trimester 3?
+        self.trim3 = dds[4]
+        #ECTS
+        self.ects = dds[5]
+        #Marking Scheme
+        self.marking = dds[6]
+        #Pass Mark
+        self.pass_mark = paragraphs[0]
+        #Delivery Type
+        self.delivery_type = paragraphs[1]
+        #Pre-Requisites
+        self.pre_requisites = paragraphs[2]
+        #Co-Requisites
+        self.co_requisites = paragraphs[3]
+        #Barred Combinations
+        self.barred_combinations = paragraphs[4]
+        #Module Outline
+        self.outline = paragraphs[5] + "  " + paragraphs[6]
+        #Indicative Content
+        self.indicative_content = tables[0]
+        #Learning Outcomes
+        self.learning_outcomes = tables[1]
+        #Learning And Teaching Strategy
+        self.learning_and_teaching_strategy = paragraphs[7]
+        #Learning & Teaching Methods
+        self.learning_and_teaching_methods = tables[2]
+        #Formative Assessment Strategy
+        self.formative_assessment_strategy = paragraphs[8]
+        #Summative Assessment Strategy
+        self.summative_assessment_strategy = paragraphs[9]
+        #Summative Assessments
+        self.summative_assessments = tables[3]
+        #Learning Resources
+        self.learning_resources = tables[4]
+        #Feedback to Students
+        self.student_feedback = paragraphs[10]
 
 def parseJson(module):
     #translate the module data into a json string portion
-    str module_json
+    module_json
     module_json += '{"name": "' + module.id + '","size": 20,"children": ['
     module_json += '{"name":"' + module.title + '","size": 20},'
     module_json += '{"name": "details:","size": 20,"children": ['
@@ -218,6 +164,7 @@ def parseJson(module):
         module_json += '{"name": "' + resource + '","size": 20},'
         module_json += ']},'
     #remove trailing comma on last resource
+
     module_json += ']},'
     module_json += '{"name": "Feedback to Students","size": 20,"children": ['
     module_json += '{"name": "' + module.student_feedback + '","size": 20}'
@@ -225,7 +172,7 @@ def parseJson(module):
     return module_json
 
 #course title
-str course_title = "Computing & Website Development HND/BSc (Hons)"
+course_title = "Computing & Website Development HND/BSc (Hons)"
 
 #array of modules in course
 modules=
@@ -250,13 +197,12 @@ modules=
 "CPU6005"]
 
 #stitch together json modules under a root "course name" node
-str json_string =
+json_string =
 '{"name":' + course title + '","children":['
 
 #add a json string for each module in this course
 for module_code in module_codes:
-  Module module = module_get(module_code)
-  json_string += parse_json(module)
+  json_string += parse_json(Module(module_code))
 
 #close the json string
 json_string += "]}"
