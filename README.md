@@ -9,3 +9,19 @@ Paste this over sampledata.json.
 
 If I can somehow get hold of a list of modules by course for all of the courses
 at Bolton, I could improve this a lot, but I cannot currently find such a list...
+
+prerequisites
+=============
+This code needs python, pip, lxml and requests. You can probably install these with this command:
+
+sudo apt-get install python && sudo apt-get install pip && sudo pip install lxml && sudo pip install requests
+
+Or if you're really lazy try:
+
+sudo apt-get install git && git clone https://github.com/infoburp/coursemap && cd coursemap && sudo apt-get install python && sudo apt-get install pip && sudo apt-get install libxml2-dev libxslt1-dev python-dev python-lxml && sudo pip install requests && python get_course_json.py > course.json
+
+Then edit get_course_json.py to include the modules you want to load in the modules array and run:
+
+python get_course_json.py
+
+The program should print json to the screen as described above.
