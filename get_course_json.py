@@ -49,21 +49,21 @@ class Module:
         #Module Outline
         self.outline = paragraphs[5] + "  " + paragraphs[6]
         #Indicative Content
-        self.indicative_content = tables[0]
+        #self.indicative_content = tables[0]
         #Learning Outcomes
-        self.learning_outcomes = tables[1]
+        #self.learning_outcomes = tables[1]
         #Learning And Teaching Strategy
         self.learning_and_teaching_strategy = paragraphs[7]
         #Learning & Teaching Methods
-        self.learning_and_teaching_methods = tables[2]
+        #self.learning_and_teaching_methods = tables[2]
         #Formative Assessment Strategy
         self.formative_assessment_strategy = paragraphs[8]
         #Summative Assessment Strategy
         self.summative_assessment_strategy = paragraphs[9]
         #Summative Assessments
-        self.summative_assessments = tables[3]
+        #self.summative_assessments = tables[3]
         #Learning Resources
-        self.learning_resources = tables[4]
+        #self.learning_resources = tables[4]
         #Feedback to Students
         self.student_feedback = paragraphs[10]
 
@@ -95,71 +95,71 @@ def parse_json(module):
     module_json += '''{"name": "Module Outline","size": 20,"children": ['''
     module_json += '''{"name": "'''+ module.outline + '''","size": 20}'''
     module_json += ''']},'''
-    module_json += '''{"name": "Indicative Content","size": 20,"children": ['''
+    #module_json += '''{"name": "Indicative Content","size": 20,"children": ['''
     #loop to insert all indicative content items
-    idicatives = module.indicative_content.xpath('//td/text()')
+    #idicatives = module.indicative_content.xpath('//td/text()')
     #only insert tds that are text, not just a number
-    for indicative in indicatives:
+    #for indicative in indicatives:
         #if indicative is not just a number:
-        if re.match("^[0-9 ]+$", indicative) is False:
-            module_json += '''{"name": "''' + indicative + '''","size": 20},'''
-            module_json += ''']},'''
+        #if re.match("^[0-9 ]+$", indicative) is False:
+            #module_json += '''{"name": "''' + indicative + '''","size": 20},'''
+            #module_json += ''']},'''
             #remove trailing comma on last indicative
 
-    module_json += '''{"name": "Learning Outcomes","size": 20,"children": ['''
+    #module_json += '''{"name": "Learning Outcomes","size": 20,"children": ['''
     #loop to insert all learning outcome items
-    outcomes = module.learning_outcomes.xpath('//td/text()')
+    #outcomes = module.learning_outcomes.xpath('//td/text()')
     #only insert tds that are text, not just a number
-    for outcome in outcomes:
+    #for outcome in outcomes:
         #if outcome is not just a number:
-        if re.match("^[0-9 ]+$", outcome) is False:
-            module_json += '''{"name": "''' + outcome + '''","size": 20},'''
-            module_json += ''']},'''
+        #if re.match("^[0-9 ]+$", outcome) is False:
+            #module_json += '''{"name": "''' + outcome + '''","size": 20},'''
+            #module_json += ''']},'''
             #remove trailing comma on last outcome
-    module_json += ''']},'''
+    #module_json += ''']},'''
     module_json += '''{"name": "Learning And Teaching Strategy","size": 20,"children": ['''
     module_json += '''{"name": "''' + module.learning_and_teaching_strategy + '''","size": 20},'''
-    module_json += '''{"name": "Learning & Teaching Methods","size": 20,"children": ['''
-    module_json += '''{"name": "Hours","size": 20,"children": ['''
-    hours = module.learning_and_teaching_methods.xpath('''//td/text()''')
-    scheduled = hours[2]
-    independant =  hours[5]
-    module_json += '''{"name": "''' + scheduled + ''' scheduled","size": ''' + scheduled + '''},'''
-    module_json += '''{"name": "''' + independant + ''' independant","size": ''' + independant + '''}'''
-    module_json += ''']},'''
+    #module_json += '''{"name": "Learning & Teaching Methods","size": 20,"children": ['''
+    #module_json += '''{"name": "Hours","size": 20,"children": ['''
+    #hours = module.learning_and_teaching_methods.xpath('''//td/text()''')
+    #scheduled = hours[2]
+    #independant =  hours[5]
+    #module_json += '''{"name": "''' + scheduled + ''' scheduled","size": ''' + scheduled + '''},'''
+    #module_json += '''{"name": "''' + independant + ''' independant","size": ''' + independant + '''}'''
+    #module_json += ''']},'''
     module_json += '''{"name": "Formative Assessment Strategy","size": 20,"children": ['''
     module_json += '''{"name": "''' + module.formative_assessment_strategy + '''","size": 20}'''
     module_json += ''']},'''
     module_json += '''{"name": "Summative Assessment Strategy","size": 20,"children": ['''
     module_json += '''{"name": "''' + module.summative_assessment_strategy + '''","size": 20}'''
-    module_json += ''']},'''
-    module_json += '''{"name": "Summative Assessments","size": 20,"children": ['''
+    module_json += ''']}'''
+    #module_json += '''{"name": "Summative Assessments","size": 20,"children": ['''
     #loop to add all summative assessment items
-    summative_rows = module.summative_assessments.xpath('''//tr/text()''')
-    for row in summative_rows:
-        summatives = row.xpath('//td/text()')
+    #summative_rows = module.summative_assessments.xpath('''//tr/text()''')
+    #for row in summative_rows:
+        #summatives = row.xpath('//td/text()')
         #add summative details
         #KIS
-        module_json += '''{"name": "''' + summatives[2] + '''","size": 20'''
+        #module_json += '''{"name": "''' + summatives[2] + '''","size": 20'''
         #Description
-        module_json += '''{"name": "''' + summatives[3] + '''","size": 20'''
+        #module_json += '''{"name": "''' + summatives[3] + '''","size": 20'''
         #Learning Outcomes
-        module_json += '''{"name": "''' + summatives[4] + '''","size": 20'''
+        #module_json += '''{"name": "''' + summatives[4] + '''","size": 20'''
         #Marking Scheme
-        module_json += '''{"name": "''' + summatives[5] + '''","size": 20'''
+        #module_json += '''{"name": "''' + summatives[5] + '''","size": 20'''
         #Passmark
-        module_json += '''{"name": "''' + summatives[6] + '''","size": ''' + summatives[6]
+        #module_json += '''{"name": "''' + summatives[6] + '''","size": ''' + summatives[6]
         #KIS Weighting
-        module_json += '''{"name": "''' + summatives[7] + '''","size": 20'''
-        module_json += ''']},'''
+        #module_json += '''{"name": "''' + summatives[7] + '''","size": 20'''
+        #module_json += ''']},'''
         #remove trailing comma on last summative
-    module_json += ''']},'''
-    module_json += '''{"name": "Learning Resources","size": 20,"children": ['''
+    #module_json += ''']},'''
+    #module_json += '''{"name": "Learning Resources","size": 20,"children": ['''
     #loop to add all learning resources
-    resources = module.learning_resources.xpath('//td/text()')
-    for resource in resources:
-        module_json += '''{"name": "''' + resource + '''","size": 20},'''
-        module_json += ''']},'''
+    #resources = module.learning_resources.xpath('//td/text()')
+    #for resource in resources:
+        #module_json += '''{"name": "''' + resource + '''","size": 20},'''
+        #module_json += ''']},'''
     #remove trailing comma on last resource
 
     module_json += ''']},'''
