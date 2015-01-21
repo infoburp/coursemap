@@ -74,22 +74,24 @@ def module_get(module_id):
     tree = html.fromstring(page.text)
     paragraphs = tree.xpath('//p/text()')
     header4s = tree.xpath('//h4/text()')
+    dds = tree.xpath('//dd/text()')
+    tables = tree.xpath('//table/text()')
     #module title
     module.title = header4s[0]
     #Credits
-    module.credits =
+    module.credits = dds[0]
     #Level
-    module.level =
+    module.level = dds[1]
     #Type
-    module.type =
+    module.type = dds[2]
     #Duration
-    module.duration =
+    module.duration = dds[3]
     #Trimester 3?
-    module.trim3 =
+    module.trim3 = dds[4]
     #ECTS
-    module.ects =
+    module.ects = dds[5]
     #Marking Scheme
-    module.marking =
+    module.marking = dds[6]
     #Pass Mark
     module.pass_mark = paragraphs[0]
     #Delivery Type
@@ -103,21 +105,21 @@ def module_get(module_id):
     #Module Outline
     module.outline = paragraphs[5] + "  " + paragraphs[6]
     #Indicative Content
-    module.indicative_content =
+    module.indicative_content = tables[0]
     #Learning Outcomes
-    module.learning_outcomes =
+    module.learning_outcomes = tables[1]
     #Learning And Teaching Strategy
     module.learning_and_teaching_strategy = paragraphs[7]
     #Learning & Teaching Methods
-    module.learning_and_teaching_methods =
+    module.learning_and_teaching_methods = tables[2]
     #Formative Assessment Strategy
     module.formative_assessment_strategy = paragraphs[8]
     #Summative Assessment Strategy
     module.summative_assessment_strategy = paragraphs[9]
     #Summative Assessments
-    module.summative_assessments =
+    module.summative_assessments = tables[3]
     #Learning Resources
-    module.learning_resources =
+    module.learning_resources = tables[4]
     #Feedback to Students
     module.student_feedback = paragraphs[10]
     #return the Module object
@@ -153,14 +155,17 @@ def parseJson(module):
     module_json += '{"name": "'+ module.outline + '","size": 20}
     module_json += ']},'
     module_json += '{"name": "Indicative Content","size": 20,"children": ['
-                        #loop to insert all indicative content items
-                            #{
-                            #    "name": "Analysis and evaluation of website design",
-                            #    "size": 20
-                            #},
-    module_json += ']},'
+    #loop to insert all indicative content items
+    idicatives = module.indicative_content.xpath('//td/text()')
+    #only insert tds that are text, not just a number
+    for inicative in indicatives:
+        if indicative #is not just a number:
+            module_json += '{"name": "' + indicative + '","size": 20},'
+            module_json += ']},'
+            #remove trailing comma on last indicative
+            
     module_json += '{"name": "Learning Outcomes","size": 20,"children": ['
-                        #loop to insert all learning outcome items
+    #loop to insert all learning outcome items
                             #{
                             #    "name": "display knowledge and understanding of Internet structure, applications and services.",
                             #    "size": 20
