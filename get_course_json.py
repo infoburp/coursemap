@@ -75,7 +75,7 @@ def parse_json(module):
     module_json += '''{"name": "Credits: ''' + module.credits + '''","size": ''' + module.credits + '''},'''
     module_json += '''{"name": "Level: ''' + module.level + '''","size": 20},'''
     module_json += '''{"name": "Type: ''' + module.type + '''","size": 20},'''
-    module_json += '''{"name": "Duration: ''' + module.duration + '''","size": ''' + (module.duration * 10) + '''},'''
+    module_json += '''{"name": "Duration: ''' + module.duration + '''","size": ''' + module.duration + '''},'''
     module_json += '''{"name": "Trimester 3?: ''' + module.trim3 + '''","size": 20},'''
     module_json += '''{"name": "ECTS: ''' + module.ects + '''","size": ''' + module.ects + '''},'''
     module_json += '''{"name": "Marking Scheme: ''' + module.marking + '''","size": 100},'''
