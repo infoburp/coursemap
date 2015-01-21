@@ -7,10 +7,6 @@ class Module:
     str id
     #form url for module html page
     str url = "https://modules.bolton.ac.uk/" + id
-    #module code
-    str code
-    #module year
-    str year
     #module title
     str title
     #Credits
@@ -76,12 +72,10 @@ def module_get(module_id):
     #get module html page
     page = requests.get(module)
     tree = html.fromstring(page.text)
-    #module code
-    module.code =
-    #module year
-    module.year =
+    paragraphs = tree.xpath('//p/text()')
+    header4s = tree.xpath('//h4/text()')
     #module title
-    module.title =
+    module.title = header4s[0]
     #Credits
     module.credits =
     #Level
@@ -97,35 +91,35 @@ def module_get(module_id):
     #Marking Scheme
     module.marking =
     #Pass Mark
-    module.pass_mark =
+    module.pass_mark = paragraphs[0]
     #Delivery Type
-    module.delivery_type =
+    module.delivery_type = paragraphs[1]
     #Pre-Requisites
-    module.pre_requisites =
+    module.pre_requisites = paragraphs[2]
     #Co-Requisites
-    module.co_requisites =
+    module.co_requisites = paragraphs[3]
     #Barred Combinations
-    module.barred_combinations =
+    module.barred_combinations = paragraphs[4]
     #Module Outline
-    module.outline =
+    module.outline = paragraphs[5] + "  " + paragraphs[6]
     #Indicative Content
     module.indicative_content =
     #Learning Outcomes
     module.learning_outcomes =
     #Learning And Teaching Strategy
-    module.learning_and_teaching_strategy =
+    module.learning_and_teaching_strategy = paragraphs[7]
     #Learning & Teaching Methods
     module.learning_and_teaching_methods =
     #Formative Assessment Strategy
-    module.formative_assessment_strategy =
+    module.formative_assessment_strategy = paragraphs[8]
     #Summative Assessment Strategy
-    module.summative_assessment_strategy =
+    module.summative_assessment_strategy = paragraphs[9]
     #Summative Assessments
     module.summative_assessments =
     #Learning Resources
     module.learning_resources =
     #Feedback to Students
-    module.student_feedback =
+    module.student_feedback = paragraphs[10]
     #return the Module object
     return module
 
@@ -147,18 +141,13 @@ def parseJson(module):
     module_json += '{"name": "Delivery Type","size": 20,"children": ['
     module_json += '{"name": "' + module.delivery_type + '","size": 20}]},'
     module_json += '{"name": "Pre-Requisites","size": 20,"children": ['
-    #loop to add all pre-requisites
-    module_json += '{"name": "None Specified","size": 20}'
-
+    module_json += '{"name": "' + module.pre_requisites + '","size": 20}'
     module_json += ']},'
     module_json += '{"name": "Co-Requisites","size": 20,"children": ['
-    #loop to add all co-requisites
-    module_json += '{"name": "None Specified","size": 20}
-
+    module_json += '{"name": "' + module.co_requisites + '","size": 20}
     module_json += ']},'
     module_json += '{"name": "Barred Combinations","size": 20,"children": ['
-    #loop to add all barred combinations
-    module_json += '{"name": "None Specified","size": 20}'
+    module_json += '{"name": "' + module.barred_combinations + '","size": 20}'
     module_json += ']},'
     module_json += '{"name": "Module Outline","size": 20,"children": ['
     module_json += '{"name": "'+ module.outline + '","size": 20}
@@ -190,12 +179,7 @@ def parseJson(module):
                                                 "name": "132.5 independant",
                                                 "size": 132.5
                                             }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
+    module_json += ']},'
     module_json += '{"name": "Formative Assessment Strategy","size": 20,"children": ['
     module_json += '{"name": "' + module.formative_assessment_strategy + '","size": 20}'
     module_json += ']},'
