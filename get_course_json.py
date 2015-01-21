@@ -1,6 +1,7 @@
 import json
 import lxml
 from lxml import html
+from unidecode import unidecode
 import requests
 
 class Module:
@@ -189,6 +190,7 @@ print(json_string)
 
 string_for_output = json_string.encode('utf8', 'replace')
 
+str_out =unidecode(u string_for_output)
 #write the json to a file
 with open('sampledata.json', 'w') as file_:
-    file_.write(string_for_output)
+    file_.write(str_out)
