@@ -104,8 +104,9 @@ def parseJson(module):
     #loop to insert all indicative content items
     idicatives = module.indicative_content.xpath('//td/text()')
     #only insert tds that are text, not just a number
-    for inicative in indicatives:
-        if indicative #is not just a number:
+    for indicative in indicatives:
+        #if indicative is not just a number:
+        if re.match("^[0-9 ]+$", indicative) is False:
             module_json += '{"name": "' + indicative + '","size": 20},'
             module_json += ']},'
             #remove trailing comma on last indicative
@@ -115,7 +116,8 @@ def parseJson(module):
     outcomes = module.learning_outcomes.xpath('//td/text()')
     #only insert tds that are text, not just a number
     for outcome in outcomes:
-        if outcome #is not just a number:
+        #if outcome is not just a number:
+        if re.match("^[0-9 ]+$", outcome) is False:
             module_json += '{"name": "' + outcome + '","size": 20},'
             module_json += ']},'
             #remove trailing comma on last outcome
@@ -175,30 +177,10 @@ def parseJson(module):
 course_title = "Computing & Website Development HND/BSc (Hons)"
 
 #array of modules in course
-modules=
-[
-"CPU4000",
-"CPU4003",
-"CPU4005",
-"CPU4001",
-"CPU4002",
-"CPU4004",
-"CPU5001",
-"CPU5002",
-"CPU5003",
-"CPU5000",
-"CPU5004",
-"CPU5005",
-"CPU6000",
-"CPU6001",
-"CPU6002",
-"CPU6004",
-"CPU6003",
-"CPU6005"]
+modules = ["CPU4000","CPU4003","CPU4005","CPU4001","CPU4002","CPU4004","CPU5001","CPU5002","CPU5003","CPU5000","CPU5004","CPU5005","CPU6000","CPU6001","CPU6002","CPU6004","CPU6003","CPU6005"]
 
 #stitch together json modules under a root "course name" node
-json_string =
-'{"name":' + course title + '","children":['
+json_string = '{"name":' + course title + '","children":['
 
 #add a json string for each module in this course
 for module_code in module_codes:
