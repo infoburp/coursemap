@@ -12,7 +12,7 @@ class Module:
         #get the html page at url
         page = requests.get(url)
         #parse the html into a tree
-        tree = html.fromstring(page.text)
+        tree = lxml.html.fromstring(page.text)
         #extract the relevant data, adding it to the Module object
         #module id
         self.id = module_id
