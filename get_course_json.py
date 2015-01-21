@@ -190,5 +190,5 @@ print(json_string)
 string_for_output = json_string.encode('utf8', 'replace')
 
 #write the json to a file
-with open('course.json', 'w') as file_:
+with open('sampledata.json', 'w') as file_:
     file_.write(string_for_output)
