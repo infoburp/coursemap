@@ -177,7 +177,7 @@ def parseJson(module):
 course_title = "Computing & Website Development HND/BSc (Hons)"
 
 #array of modules in course
-modules = ["CPU4000","CPU4003","CPU4005","CPU4001","CPU4002","CPU4004","CPU5001","CPU5002","CPU5003","CPU5000","CPU5004","CPU5005","CPU6000","CPU6001","CPU6002","CPU6004","CPU6003","CPU6005"]
+module_codes = ["CPU4000","CPU4003","CPU4005","CPU4001","CPU4002","CPU4004","CPU5001","CPU5002","CPU5003","CPU5000","CPU5004","CPU5005","CPU6000","CPU6001","CPU6002","CPU6004","CPU6003","CPU6005"]
 
 #stitch together json modules under a root "course name" node
 json_string = '''{"name":''' + course_title + '''","children":['''
