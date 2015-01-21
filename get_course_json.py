@@ -186,6 +186,7 @@ json_string += "]}"
 
 #remove invalid chars
 out = ''.join([x for x in json_string if ord(x) < 128])
+out = out.rstrip('\r\n')
 
 #print the json string
 print(json_string)
