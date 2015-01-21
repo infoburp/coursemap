@@ -165,7 +165,7 @@ def parse_json(module):
     module_json += ''']},'''
     module_json += '''{"name": "Feedback to Students","size": 20,"children": ['''
     module_json += '''{"name": "''' + module.student_feedback + '''","size": 20}'''
-    module_json += ''']}]}]}'''
+    module_json += ''']}]},'''
     return module_json
 
 #course title
