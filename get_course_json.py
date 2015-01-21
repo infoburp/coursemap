@@ -182,6 +182,9 @@ json_string = '''{"name":"''' + course_title + '''","children":['''
 for module_code in module_codes:
   json_string += parse_json(Module(module_code))
 
+#remove the last comma
+json_string = json_string[:-1]
+
 #close the json string
 json_string += "]}"
 
