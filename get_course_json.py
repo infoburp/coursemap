@@ -68,8 +68,7 @@ class Module:
 
 def parse_json(module):
     #translate the module data into a json string portion
-    module_json
-    module_json += '''{"name": "''' + module.id + '''","size": 20,"children": ['''
+    module_json = '''{"name": "''' + module.id + '''","size": 20,"children": ['''
     module_json += '''{"name":"''' + module.title + '''","size": 20},'''
     module_json += '''{"name": "details:","size": 20,"children": ['''
     module_json += '''{"name": "Credits: ''' + module.credits + '''","size": ''' + module.credits + '''},'''
