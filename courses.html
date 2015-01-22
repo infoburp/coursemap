@@ -54,7 +54,7 @@ d3.json("university_courses.json", function(error, json) {
       .data(nodes)
     .enter().append("g")
       .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x - 256 + ")"; })
 
   node.append("circle")
       .attr("r", 4.5);
