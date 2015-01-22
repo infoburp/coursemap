@@ -9,24 +9,21 @@ import re
 courses_json = '''{"name": "Bolton University Courses","size": 20,"children": ['''
 for num in range(1000, 9999):
 	url = 'http://courses.bolton.ac.uk/Details/Index/' + str(num)
-	try:
-		#get the html page at url
-	        page = requests.get(url)
-	        #parse the html into a tree
-	        tree = lxml.html.fromstring(page.text)
-	        #extract the relevant data, adding it to the Module object
-	        #module id
-	        self.id = module_id
-	        titles = tree.xpath('//title/text()')
-	        title = titles[0]
-	        if title.find("Search For a Course") == -1:
-			print ("Not a course URL")
-		else:
-	        	courses_json += '''{"name":"''' + title + '''","size": 20},'''
-	        	courses_json += ''']},'''
-	        	print("Get module " + title)
-	except:
-		print("Can't get " + url)
+	#get the html page at url
+        page = requests.get(url)
+        #parse the html into a tree
+	tree = lxml.html.fromstring(page.text)
+        #extract the relevant data, adding it to the Module object
+        #module id
+        self.id = module_id
+        titles = tree.xpath('//title/text()')
+        title = titles[0]
+        if title.find("Search For a Course") == -1:
+		print (url + "is not a course URL")
+	else:
+        	courses_json += '''{"name":"''' + title + '''","size": 20},'''
+        	courses_json += ''']},'''
+        	print("Get module " + title)
 #remove the last comma
 courses_json = courses_json[:-1]
 
