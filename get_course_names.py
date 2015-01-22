@@ -18,7 +18,7 @@ for num in range(0, 99999):
         if title.find("Search For a Course") == -1:
 		courses_json += '''{"name":"''' + title + '''","size": 20},'''
         	courses_json += ''']},'''
-        	print("Get module " + title)
+        	print(title)
 	else:
         	print (url + "is not a course URL")
 #remove the last comma
