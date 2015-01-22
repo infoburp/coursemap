@@ -10,7 +10,7 @@ subjects = [68,42,46,40,79,43,50,80,45,59,44,53,54,66,49,58,57,47,77,48,67,39,75
 subject_names = ["Foundation","Art","Biology","Business and Law","Chemistry","Civil Engineering","Early Years","Media","Design Technology","Distance Learning","Engineering","Computing","Health","Materials Research","Mathematics","Off Campus Overseas ","Off Campus UK","Psychology","Renewable Energy","Sport","Education","English","Top-up","University-wide"]
 subject_index = 0
 for subject in subjects:
-	json_string+='''{"name":''' + subject_names[subject_index] + ''',"size":20,"children":['''
+	json_string+='''{"name":"''' + subject_names[subject_index] + '''","size":20,"children":['''
 	subject_index += 1
 	#loop for levels
 	json_string+='''{"name": "Study levels","size":20,"children":['''
@@ -18,7 +18,7 @@ for subject in subjects:
 	level_names = ["Undergraduate","Postgraduate","Further Education","Professional Development (Undergraduate Level)","Professional Development (Postgraduate Level)","Professional Development (Further Education Level)"]
 	level_index = 0
 	for level in levels:
-		json_string+='''{"name":''' + level_names[level_index] + ''',"size":20,"children":['''
+		json_string+='''{"name":"''' + level_names[level_index] + '''","size":20,"children":['''
 		level_index += 1
 		#loop for attendance types
 		attendances=[13,14,15]
@@ -29,14 +29,11 @@ for subject in subjects:
 			tree = lxml.html.fromstring(r.text)
 		        paragraphs = tree.xpath('//a/text()')
 			#81>a.length
-			for x in range(81,len(paragraphs)):
-				json_string+='''{"name": "''' + paragraphs[x] + '''","size":20}'''
+			for x in range(81,len(paragraphs)-8):
+				json_string+='''{"name": "''' + paragraphs[x] + '''","size":20},'''
+			#remove the last comma
+			json_string = json_string[:-1]
 json_string+="]}]}]}]}"
-#remove the last comma
-json_string = json_string[:-1]
-
-#close the json string
-json_string += "]}"
 
 #remove invalid chars
 out = ''.join([x for x in json_string if ord(x) < 128])
