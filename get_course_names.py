@@ -3,11 +3,16 @@ import lxml
 from lxml import html
 import requests
 import re
+import timeit
+
+start = timeit.default_timer()
+print("Starting scrape at:" + str(start))
 
 #code to pull down a list of course names
-
+total_scrape_time = 0
 courses_json = '''{"name": "Bolton University Courses","size": 20,"children": ['''
-for num in range(1000, 99999):
+for num in range(1000, 3000):
+	course_start = timeit.default_timer()
 	url = 'http://courses.bolton.ac.uk/Details/Index/' + str(num)
 	#get the html page at url
         page = requests.get(url)
@@ -21,6 +26,14 @@ for num in range(1000, 99999):
         	print(title)
 	else:
         	print (url + "is not a course URL")
+        scrape_time = timeit.default_timer() - course_start
+        total_scrape_time += scrape_time
+	print("Course scrape took " + str(timeit.default_timer() - course_start)
+	if (num - 1000) > 0:
+		average_scrape_time = total_scrape_time / (num - 1000)
+	else if (num - 1000) = 0:
+		average_scrape_time = total_scrape_time
+	print((3000 - num) + " remaining to scrape, guestimated time remaining " + ((3000-num) * average_scape_time) + " seconds")
 #remove the last comma
 courses_json = courses_json[:-1]
 
@@ -35,6 +48,14 @@ out = re.sub( '\s+', ' ', out ).strip()
 #print the json string
 print(courses_json)
 
+print("Saving to university_courses.json")
+
 #write the json to a file
 with open('university_courses.json', 'w') as file_:
     file_.write(out)
+
+stop = timeit.default_timer()
+print("Scrape finishes at: " + str(stop))
+print("Scrape started at: " + str(start))
+
+print("Total scrape time: " + str(stop-start))
