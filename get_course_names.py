@@ -7,7 +7,7 @@ import re
 #code to pull down a list of course names
 
 courses_json = '''{"name": "Bolton University Courses","size": 20,"children": ['''
-for num in range(1000, 9999):
+for num in range(0, 99999):
 	url = 'http://courses.bolton.ac.uk/Details/Index/' + str(num)
 	#get the html page at url
         page = requests.get(url)
