@@ -17,7 +17,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2 + "," + diameter / 2 + ")");
 //load in some json data
-d3.json("sampledata.json", function(error, root) {
+d3.json("all_courses.json", function(error, root) {
   if (error) {
     return console.error(error);
   }
