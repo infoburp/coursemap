@@ -26,4 +26,9 @@ for subject in subjects:
 			payload = {'SubjectAreaID': subject, 'StudyLevelID': level, 'AttendenceID': attendance}
 			r = requests.post("http://courses.bolton.ac.uk/", data=payload)
 			print(r.text)
+			tree = lxml.html.fromstring(r.text)
+		        paragraphs = tree.xpath('//a/text()')
+			#81>a.length
+			for x in range(81,len(paragraphs)):
+				json_string+='''{"name": "''' + paragraphs[x] + '''","size":20}'''
 json_string+="]}]}]}]}"
