@@ -16,11 +16,11 @@ for num in range(1000, 9999):
         titles = tree.xpath('//title/text()')
         title = titles[0]
         if title.find("Search For a Course") == -1:
-		print (url + "is not a course URL")
-	else:
-        	courses_json += '''{"name":"''' + title + '''","size": 20},'''
+		courses_json += '''{"name":"''' + title + '''","size": 20},'''
         	courses_json += ''']},'''
         	print("Get module " + title)
+	else:
+        	print (url + "is not a course URL")
 #remove the last comma
 courses_json = courses_json[:-1]
 
