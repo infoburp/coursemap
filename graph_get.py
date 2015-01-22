@@ -33,7 +33,7 @@ for subject in subjects:
 		        paragraphs = tree.xpath('//a/text()')
 			#81>a.length
 			for x in range(81,len(paragraphs)-8):
-				nodes+='''{"nodes":[{"name":"''' + paragraphs[x] + '''","group":5},'''
+				nodes+='''{"name":"''' + paragraphs[x] + '''","group":5},'''
 				links += '''{"source":''' + str(level_number + len(subjects)) + ''',"target":'''+ str(len(levels) + len(subjects) + course_number) +''',"value":1},'''
 				number += 1
 			course_number += 1
