@@ -4,7 +4,7 @@ from lxml import html
 import requests
 import re
 
-json_string+='''{"name": "Subjects","size":20,"children":['''
+json_string='''{"name": "Subjects","size":20,"children":['''
 #loop for subjects
 subjects = [68,42,46,40,79,43,50,80,45,59,44,53,54,66,49,58,57,47,77,48,67,39,75,76]
 subject_names = ["Foundation","Art","Biology","Business and Law","Chemistry","Civil Engineering","Early Years","Media","Design Technology","Distance Learning","Engineering","Computing","Health","Materials Research","Mathematics","Off Campus Overseas ","Off Campus UK","Psychology","Renewable Energy","Sport","Education","English","Top-up","University-wide"]
