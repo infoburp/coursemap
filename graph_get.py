@@ -26,7 +26,7 @@ for subject in subjects:
 		for attendance in attendances:
 			payload = {'SubjectAreaID': subject, 'StudyLevelID': level, 'AttendenceID': attendance}
 			r = requests.post("http://courses.bolton.ac.uk/", data=payload)
-			print("Getting (" + str(subject) + "," + str(level) + "," + str(attendance) + ")")
+			print("Getting (" + str(subject) + "," + str(level) + "," + str(attendance) + ")" + " " + number + " of " + str(len(subjects) * (len(levels) * len(attendances))))
 			tree = lxml.html.fromstring(r.text)
 		        paragraphs = tree.xpath('//a/text()')
 			#81>a.length
@@ -37,8 +37,8 @@ for subject in subjects:
 		level_number += 1
 	subject_number += 1
 #remove the last commas
-nodes = json_string[:-1]
-links = json_string[:-1]
+nodes = nodes[:-1]
+links = links[:-1]
 
 json_string = nodes + '],' + links + ']}'
 #remove invalid chars
