@@ -197,7 +197,11 @@ json_string = '''{"name":"''' + course_title + '''","children":['''
 
 #add a json string for each module in this course
 for module_code in module_codes:
-  json_string += parse_json(Module(module_code))
+    try:
+        print("Fetching module: " + module_code)
+        json_string += parse_json(Module(module_code))
+    except:
+        print("Couldn't fetch module: " + module_code)
 
 #remove the last comma
 json_string = json_string[:-1]
