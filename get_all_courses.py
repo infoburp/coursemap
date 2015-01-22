@@ -231,4 +231,4 @@ stop = timeit.default_timer()
 print("Scrape finishes at: " + str(stop))
 print("Scrape started at: " + str(start))
 
-Print("Total scrape time: " + str(stop-start))
+print("Total scrape time: " + str(stop-start))
