@@ -29,10 +29,10 @@ for num in range(1000, 3000):
         scrape_time = timeit.default_timer() - course_start
         total_scrape_time += scrape_time
 	print("Course scrape took " + str(timeit.default_timer() - course_start)
-	num_courses = num - 1000
-	if num_courses > 0:
-		average_scrape_time = total_scrape_time / num_courses
-	else if num_courses == 0:
+	numb_courses = num - 1000
+	if numb_courses > 0:
+		average_scrape_time = total_scrape_time / numb_courses
+	else if numb_courses == 0:
 		average_scrape_time = total_scrape_time
 	remaining_courses = 3000 - num
 	print(remaining_courses + " remaining to scrape, guestimated time remaining " + (remaining_courses * average_scape_time) + " seconds")
