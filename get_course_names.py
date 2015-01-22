@@ -11,16 +11,16 @@ for num in range(0, 9999):
 	url = 'http://courses.bolton.ac.uk/Details/Index/' + str(num)
 	try:
 		#get the html page at url
-        page = requests.get(url)
-        #parse the html into a tree
-        tree = lxml.html.fromstring(page.text)
-        #extract the relevant data, adding it to the Module object
-        #module id
-        self.id = module_id
-        titles = tree.xpath('//title/text()')
-        title = titles[0]
-        courses_json += '''{"name":"''' + title + '''","size": 20},'''
-        courses_json += ''']},'''
+	        page = requests.get(url)
+	        #parse the html into a tree
+	        tree = lxml.html.fromstring(page.text)
+	        #extract the relevant data, adding it to the Module object
+	        #module id
+	        self.id = module_id
+	        titles = tree.xpath('//title/text()')
+	        title = titles[0]
+	        courses_json += '''{"name":"''' + title + '''","size": 20},'''
+	        courses_json += ''']},'''
 
 #remove the last comma
 courses_json = courses_json[:-1]
