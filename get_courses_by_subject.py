@@ -7,6 +7,7 @@ import re
 json_string='''{"name": "Subjects","size":20,"children":['''
 #loop for subjects
 subjects = [68,42,46,40,79,43,50,80,45,59,44,53,54,66,49,58,57,47,77,48,67,39,75,76]
+subject_names = []
 subject_names[68] = "Foundation"
 subject_names[42] = "Art"
 subject_names[46] = "Biology"
@@ -36,6 +37,7 @@ for subject in subjects:
 	#loop for levels
 	json_string+='''{"name": "Study levels","size":20,"children":['''
 	levels = [15,16,17,19,18,20]
+	level_names=[]
 	level_names[15] = "Undergraduate"
 	level_names[16] = "Postgraduate"
 	level_names[17] = "Further Education"
