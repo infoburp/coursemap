@@ -29,18 +29,18 @@ for num in range(1, 1000):
         scrape_time = timeit.default_timer() - course_start
 	print("Course scrape took " + str(timeit.default_timer() - course_start + " (" + str(num) + "/1000)")
 #remove the last comma
-courses_json = courses_json[:-1]
+out_json = courses_json[:-1]
 
 #close the json string
-courses_json += "]}"
+out_json += "]}"
 
 #remove invalid chars
-out = ''.join([x for x in courses_json if ord(x) < 128])
+out = ''.join([x for x in out_json if ord(x) < 128])
 out = out.rstrip('\r\n')
 out = re.sub( '\s+', ' ', out ).strip()
 
 #print the json string
-print(courses_json)
+print(out)
 
 print("Saving to university_courses.json")
 
