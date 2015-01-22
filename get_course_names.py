@@ -19,9 +19,12 @@ for num in range(1000, 9999):
 	        self.id = module_id
 	        titles = tree.xpath('//title/text()')
 	        title = titles[0]
-	        courses_json += '''{"name":"''' + title + '''","size": 20},'''
-	        courses_json += ''']},'''
-	        print("Get module " + title)
+	        if title.find("Search For a Course") == -1:
+			print ("Not a course URL")
+		else:
+	        	courses_json += '''{"name":"''' + title + '''","size": 20},'''
+	        	courses_json += ''']},'''
+	        	print("Get module " + title)
 	except:
 		print("Can't get " + url)
 #remove the last comma
