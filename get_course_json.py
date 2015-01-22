@@ -101,7 +101,7 @@ def parse_json(module):
     idicatives = module.indicative_content.xpath('//td/text()')
     #only insert tds that are text, not just a number
     for indicative in indicatives:
-        if indicative is not just a number:
+        #if indicative is not just a number:
         if re.match("^[0-9 ]+$", indicative) is False:
             module_json += '''{"name": "''' + indicative + '''","size": 20},'''
             module_json += ''']},'''
