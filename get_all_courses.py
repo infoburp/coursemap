@@ -180,6 +180,7 @@ course_title = "Computing & Website Development HND/BSc (Hons)"
 module_codes=[]
 for page_number in range (1, 78):
     url= 'https://modules.bolton.ac.uk/Modules/Index?page=' + str(page_number)
+    print(url)
     page = requests.get(url)
     #parse the html into a tree
     tree = lxml.html.fromstring(page.text)
@@ -192,6 +193,7 @@ for page_number in range (1, 78):
         #nasty exception hack 
         ##nicer : if re.sub(r'\s+', '', tds[td+2]) != '':
         module_codes.append(td)#module_codes.append(tds[td])
+        print(td)
 
 #stitch together json modules under a root "course name" node
 json_string = '''{"name":"''' + course_title + '''","children":['''
