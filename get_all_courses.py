@@ -185,7 +185,7 @@ for page_number in range (1, 78):
     tree = lxml.html.fromstring(page.text)
     #module id
     tds = tree.xpath('//td/text()')
-    num_tds = tds.length
+    num_tds = len(tds)
     td = 0
     while td < num_tds:
         if tds[td+2] != '':
