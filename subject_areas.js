@@ -39,6 +39,7 @@ var text = svg.selectAll("text")
     .attr("class", "label")
   .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
   .style("display", function(d) { return d.parent === root ? null : "none"; })
+  .style("font-size", function(d) { return Math.min(2 * d.r, (2 * d.r - 8) / this.getComputedTextLength() * 24) + "px"; })//.attr("dy", ".35em");});
   .text(function(d) { return d.name; });
 //set up nodes
 var node = svg.selectAll("circle,text");
