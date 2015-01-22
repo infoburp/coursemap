@@ -112,7 +112,7 @@ def parse_json(module):
     outcomes = module.learning_outcomes.xpath('//td/text()')
     #only insert tds that are text, not just a number
     for outcome in outcomes:
-        if outcome is not just a number:
+        #if outcome is not just a number:
         if re.match("^[0-9 ]+$", outcome) is False:
             module_json += '''{"name": "''' + outcome + '''","size": 20},'''
             module_json += ''']},'''
