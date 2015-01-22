@@ -199,11 +199,17 @@ for page_number in range (1, 78):
 #stitch together json modules under a root "course name" node
 json_string = '''{"name":"''' + course_title + '''","children":['''
 
+number_of_modules = str(len(module_codes)))
+print("Total number of modules: " + number_of_modules)
+
+module_number = 1
 #add a json string for each module in this course
 for module_code in module_codes:
     try:
+        print("Module : " + str(module_number) + "/" + number_of_modules)
         print("Fetching module: " + module_code)
         json_string += parse_json(Module(module_code))
+        module_number += 1
     except:
         print("Couldn't fetch module: " + module_code)
 
