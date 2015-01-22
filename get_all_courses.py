@@ -6,7 +6,7 @@ import re
 import timeit
 
 start = timeit.default_timer()
-print("Starting scrape at:" + start)
+print("Starting scrape at:" + str(start))
 
 #code to pull down data for all modules on modules.bolton.ac.uk
 
@@ -228,7 +228,7 @@ with open('all_courses.json', 'w') as file_:
     file_.write(out)
 
 stop = timeit.default_timer()
-print("Scrape finishes at: " + stop)
-print("Scrape started at: " + start)
+print("Scrape finishes at: " + str(stop))
+print("Scrape started at: " + str(start))
 
-Print("Total scrape time: " + (stop-start))
+Print("Total scrape time: " + str(stop-start))
