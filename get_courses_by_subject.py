@@ -29,7 +29,7 @@ for subject in subjects:
 			tree = lxml.html.fromstring(r.text)
 		        paragraphs = tree.xpath('//a/text()')
 			#81>a.length
-			for x in range(81,len(paragraphs)):
+			for x in range(81,len(paragraphs)-8):
 				json_string+='''{"name": "''' + paragraphs[x] + '''","size":20},'''
 			#remove the last comma
 			json_string = json_string[:-1]
