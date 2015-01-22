@@ -206,7 +206,7 @@ module_number = 1
 #add a json string for each module in this course
 for module_code in module_codes:
     try:
-        print("Module : " + str(module_number) + "/" + number_of_modules)
+        print("Module : " + str(module_number) + "/" + number_of_modules + " (" + ((module_number / number_of_modules) * 100) + "%)" )
         print("Fetching module: " + module_code)
         json_string += parse_json(Module(module_code))
         module_number += 1
