@@ -98,7 +98,8 @@ def parse_json(module):
     module_json += ''']},'''
     module_json += '''{"name": "Indicative Content","size": 20,"children": ['''
     #loop to insert all indicative content items
-    idicatives = module.indicative_content.xpath('//td/text()')
+    indicatives_tree = html.fromstring(module.indicative_content.text)
+    idicatives = indicatives_tree.xpath('//td/text()')
     #only insert tds that are text, not just a number
     for indicative in indicatives:
         #if indicative is not just a number:
@@ -109,7 +110,8 @@ def parse_json(module):
             module_json = module_json[:-1]
     module_json += '''{"name": "Learning Outcomes","size": 20,"children": ['''
     #loop to insert all learning outcome items
-    outcomes = module.learning_outcomes.xpath('//td/text()')
+    outcomes_tree = html.fromstring(module.learning_outcomes.text)
+    outcomes = outcomes_tree.xpath('//td/text()')
     #only insert tds that are text, not just a number
     for outcome in outcomes:
         #if outcome is not just a number:
@@ -137,7 +139,8 @@ def parse_json(module):
     module_json += ''']}'''
     module_json += '''{"name": "Summative Assessments","size": 20,"children": ['''
     #loop to add all summative assessment items
-    summative_rows = module.summative_assessments.xpath('''//tr/text()''')
+    summatives_tree = html.fromstring(module.summative_assessments.text)
+    summative_rows = summatives_tree.xpath('''//tr/text()''')
     for row in summative_rows:
         summatives = row.xpath('//td/text()')
         #add summative details
