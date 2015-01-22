@@ -1,26 +1,194 @@
 {"name": "Course Subject Areas","size":20,"children":[
-	{"name": "Foundation","size":20},
-	{"name": "Art","size":20},
-	{"name": "Biology","size":20},
-	{"name": "Business and Law","size":20},
-	{"name": "Chemistry","size":20},
-	{"name": "Civil Engineering","size":20},
-	{"name": "Youth","size":20},
-	{"name": "Media","size":20},
-	{"name": "Design Technology","size":20},
-	{"name": "Distance Learning","size":20},
-	{"name": "Engineering","size":20},
-	{"name": "Computing","size":20},
-	{"name": "Health","size":20},
-	{"name": "Materials","size":20},
-	{"name": "Mathematics","size":20},
-	{"name": "Off Campus Overseas","size":20},
-	{"name": "Off Campus UK","size":20},
-	{"name": "Psychology","size":20},
-	{"name": "Renewable Energy","size":20},
-	{"name": "Sport","size":20},
-	{"name": "Education","size":20},
-	{"name": "English","size":20},
-	{"name": "Top-up","size":20},
-	{"name": "University-wide","size":20}
+	{"name": "Foundation","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Art","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Biology","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Business and Law","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Chemistry","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Civil Engineering","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Youth","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Media","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Design Technology","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Distance Learning","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Engineering","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Computing","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Health","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Materials","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Mathematics","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Off Campus Overseas","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Off Campus UK","size":2,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Psychology","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Renewable Energy","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Sport","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Education","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "English","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "Top-up","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]},
+	{"name": "University-wide","size":20,"children":[
+		{"name": "Full time","size":20,"children":[
+		]},
+		{"name": "Part time","size":20,"children":[
+		]},
+		{"name": "To be confirmed","size":20,"children":[
+		]}
+	]}
 ]}
