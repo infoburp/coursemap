@@ -176,7 +176,7 @@ def parse_json(module):
     return module_json
 
 #course title
-course_title = "Computing & Website Development HND/BSc (Hons)"
+course_title = "Bolton University"
 
 #array of modules in course
 #module_codes = ["CPU4000","CPU4003","CPU4005","CPU4001","CPU4002","CPU4004","CPU5001","CPU5002","CPU5003","CPU5000","CPU5004","CPU5005","CPU6000","CPU6001","CPU6002","CPU6004","CPU6003","CPU6005"]
@@ -204,14 +204,15 @@ print("Total number of modules: " + number_of_modules)
 
 module_number = 1
 #add a json string for each module in this course
-for module_code in module_codes:
+#for module_code in module_codes:
+while module_number < number_of_modules:
+    print("Module : " + str(module_number) + "/" + number_of_modules + " (" + ((module_number / number_of_modules) * 100) + "%)" )
     try:
-        print("Module : " + str(module_number) + "/" + number_of_modules + " (" + ((module_number / number_of_modules) * 100) + "%)" )
-        print("Fetching module: " + module_code)
-        json_string += parse_json(Module(module_code))
-        module_number += 1
+        print("Fetching module: " + module_codes[module_number])
+        json_string += parse_json(Module(module_codes[module_number]))
     except:
-        print("Couldn't fetch module: " + module_code)
+        print("Couldn't fetch module: " + module_codes[module_number])
+    module_number += 1
 
 #remove the last comma
 json_string = json_string[:-1]
