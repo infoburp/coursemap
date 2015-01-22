@@ -192,8 +192,9 @@ for page_number in range (1, 78):
     #while td < num_tds:
         #nasty exception hack 
         ##nicer : if re.sub(r'\s+', '', tds[td+2]) != '':
-        module_codes.append(td)#module_codes.append(tds[td])
-        print(td)
+        td_parsed = re.sub(r'\s+', '', td)
+        module_codes.append(td_parsed)#module_codes.append(tds[td])
+        print(td_parsed)
 
 #stitch together json modules under a root "course name" node
 json_string = '''{"name":"''' + course_title + '''","children":['''
