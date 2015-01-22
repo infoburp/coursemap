@@ -3,6 +3,8 @@ import lxml
 from lxml import html
 import requests
 import re
+
+number = 1
 #make root node
 nodes='''{"nodes":[{"name":"Bolton University","group":1},'''
 links='"links":['
