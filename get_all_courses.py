@@ -179,7 +179,7 @@ course_title = "Computing & Website Development HND/BSc (Hons)"
 
 module_codes=[]
 for page_number in range (1, 78):
-    url= 'https://modules.bolton.ac.uk/Modules/Index?page=' + page_number
+    url= 'https://modules.bolton.ac.uk/Modules/Index?page=' + str(page_number)
     page = requests.get(url)
     #parse the html into a tree
     tree = lxml.html.fromstring(page.text)
