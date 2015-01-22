@@ -17,7 +17,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2 + "," + diameter / 2 + ")");
 //load in some json data
-d3.json("all_courses.json", function(error, root) {
+d3.json("sampledata.json", function(error, root) {
   if (error) {
     return console.error(error);
   }
@@ -70,7 +70,7 @@ function zoom(d) {
   //check if the node clicked has children (i.e. is it a leaf node?)
   if(!d.children) {
     //load an appropriate wiki article for the detailed leaf display on this node.
-    /*$('#article').wikiblurb(
+    $('#article').wikiblurb(
 	  {
   		wikiURL: "http://en.wikipedia.org/",
   		apiPath: 'w',
@@ -79,7 +79,7 @@ function zoom(d) {
   		removeLinks: false,
   		type: 'all',
   		customSelector: ''
-	  });*/
+	  });
     //make the wiki article appear only once the transition animation is finished
 	   setTimeout(function(){$("div").show()}, 750);
     }
@@ -93,3 +93,21 @@ function zoom(d) {
 });
 //set the height based on diameter
 d3.select(self.frameElement).style("height", diameter + "px");
+//load a default wiki article
+$(document).ready(function()
+{
+	$('#article').wikiblurb(
+	{
+		wikiURL: "http://en.wikipedia.org/",
+		apiPath: 'w',
+		section: 0,
+		page: 'Free software',
+		removeLinks: false,
+		type: 'all',
+		customSelector: ''
+	});
+});
+//set up fancy scroll bars on wiki article
+$(document).ready(function(){
+  $('#article').tinyscrollbar();
+});
