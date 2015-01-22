@@ -188,8 +188,7 @@ for page_number in range (1, 78):
     tds = tree.xpath('//td/text()')
     for td in tds:
         td_parsed = re.sub(r'\s+', '', td)
-        pattern = re.compile(td_parsed)
-        if pattern.match("([A-Z][A-Z][A-Z][0-9][0-9][0-9])\w+") != None:
+        if len(td_parsed) == 7:
             module_codes.append(td_parsed)
             print(td_parsed)
 
