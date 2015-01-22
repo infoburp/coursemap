@@ -21,6 +21,7 @@ for num in range(0, 9999):
 	        title = titles[0]
 	        courses_json += '''{"name":"''' + title + '''","size": 20},'''
 	        courses_json += ''']},'''
+	        print("Get module " + title)
 	except:
 		print("Can't get " + url)
 #remove the last comma
