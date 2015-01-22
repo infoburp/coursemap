@@ -185,12 +185,13 @@ for page_number in range (1, 78):
     tree = lxml.html.fromstring(page.text)
     #module id
     tds = tree.xpath('//td/text()')
-    num_tds = len(tds)
-    td = 0
-    while td < num_tds - 4:
-        if re.sub(r'\s+', '', tds[td+2]) != '':
-            module_codes.append(tds[td])
-        td += 3
+    #num_tds = len(tds)
+    #td = 0
+    for td in tds:
+    #while td < num_tds:
+        #nasty exception hack 
+        ##nicer : if re.sub(r'\s+', '', tds[td+2]) != '':
+        module_codes.append(td)#module_codes.append(tds[td])
 
 #stitch together json modules under a root "course name" node
 json_string = '''{"name":"''' + course_title + '''","children":['''
