@@ -3,6 +3,10 @@ import lxml
 from lxml import html
 import requests
 import re
+import timeit
+
+start = timeit.default_timer()
+print("Starting scrape at:" + start)
 
 #code to pull down data for all modules on modules.bolton.ac.uk
 
@@ -217,6 +221,14 @@ out = re.sub( '\s+', ' ', out ).strip()
 #print the json string
 print(json_string)
 
+print("Saving to all_courses.json")
+
 #write the json to a file
 with open('all_courses.json', 'w') as file_:
     file_.write(out)
+
+stop = timeit.default_timer()
+print("Scrape finishes at: " + stop)
+print("Scrape started at: " + start)
+
+Print("Total scrape time: " + (stop-start))
