@@ -4,62 +4,54 @@ from lxml import html
 import requests
 import re
 
-class Course:
-	name = 
-	subject_id =
-	level_id = 
-	attendance_id = 
-
-json_string='''{"name": "Subjects","size":20,"children":['''
-#loop for subjects
-Course courses = []
-subjects = [68,42,46,40,79,43,50,80,45,59,44,53,54,66,49,58,57,47,77,48,67,39,75,76]
-for subject in subjects:
-	levels = [15,16,17,19,18,20]
-	for level in levels:
-		attendances=[13,14,15]
-		for attendance in attendances:
-			courses.append(subject, level, attendance)
-
-
-#loop for subjects
+number = 1
+#make root node
+nodes='''{"nodes":[{"name":"Bolton University","group":1},'''
+links='"links":['
+#make node for each subject, linked to root node
+#make node for each level, linked to subject node
+#make node for each course, linked to level node
 subjects = [68,42,46,40,79,43,50,80,45,59,44,53,54,66,49,58,57,47,77,48,67,39,75,76]
 subject_names = ["Foundation","Art","Biology","Business and Law","Chemistry","Civil Engineering","Early Years","Media","Design Technology","Distance Learning","Engineering","Computing","Health","Materials Research","Mathematics","Off Campus Overseas ","Off Campus UK","Psychology","Renewable Energy","Sport","Education","English","Top-up","University-wide"]
-subject_index = 0
+subject_number = 1
 for subject in subjects:
-	json_string+='''{"name":"''' + subject_names[subject_index] + '''","size":20,"children":['''
-	subject_index += 1
-	#loop for levels
-	json_string+='''{"name": "Study levels","size":20,"children":['''
+	nodes += '''{"name":"''' + subject_names[subject_number-1] + '''","group":2},'''
+	links += '''{"source":''' + str(subject_number) + ''',"target":0,"value":1},'''
 	levels = [15,16,17,19,18,20]
 	level_names = ["Undergraduate","Postgraduate","Further Education","Professional Development (Undergraduate Level)","Professional Development (Postgraduate Level)","Professional Development (Further Education Level)"]
-	level_index = 0
+	level_number = 1
 	for level in levels:
-		json_string+='''{"name":"''' + level_names[level_index] + '''","size":20,"children":['''
-		level_index += 1
-		#loop for attendance types
+		nodes += '''{"name":"''' + level_names[level_number-1] + '''","group":4},'''
+		links += '''{"source":''' + str(level_number + len(subjects)) + ''',"target":'''+ str(subject_number) +''',"value":1},'''
 		attendances=[13,14,15]
+		course_number = 1
 		for attendance in attendances:
 			payload = {'SubjectAreaID': subject, 'StudyLevelID': level, 'AttendenceID': attendance}
 			r = requests.post("http://courses.bolton.ac.uk/", data=payload)
-			print("Getting (" + str(subject) + "," + str(level) + "," + str(attendance) + ")")
+			print("Getting (" + str(subject) + "," + str(level) + "," + str(attendance) + ")" + " " + str(number) + " of " + str(len(subjects) * (len(levels) * len(attendances))))
 			tree = lxml.html.fromstring(r.text)
 		        paragraphs = tree.xpath('//a/text()')
 			#81>a.length
 			for x in range(81,len(paragraphs)-8):
-				json_string+='''{"name": "''' + paragraphs[x] + '''","size":20},'''
-			#remove the last comma
-			json_string = json_string[:-1]
-json_string+="]}]}]}]}"
+				nodes+='''{"nodes":[{"name":"''' + paragraphs[x] + '''","group":5},'''
+				links += '''{"source":''' + str(level_number + len(subjects)) + ''',"target":'''+ str(len(levels) + len(subjects) + course_number) +''',"value":1},'''
+				number += 1
+			course_number += 1
+		level_number += 1
+	subject_number += 1
+#remove the last commas
+nodes = nodes[:-1]
+links = links[:-1]
 
+json_string = nodes + '],' + links + ']}'
 #remove invalid chars
 out = ''.join([x for x in json_string if ord(x) < 128])
 out = out.rstrip('\r\n')
 out = re.sub( '\s+', ' ', out ).strip()
 
 #print the json string
-print(json_string)
+print(out)
 
 #write the json to a file
-with open('by_subject.json', 'w') as file_:
+with open('graph.json', 'w') as file_:
     file_.write(out)
