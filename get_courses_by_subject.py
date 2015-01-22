@@ -4,7 +4,7 @@ from lxml import html
 import requests
 import re
 
-json_string='''{"name": "Subjects","size":20,"children":['''
+json_string+='''{"name": "Subjects","size":20,"children":['''
 #loop for subjects
 subjects = [68,42,46,40,79,43,50,80,45,59,44,53,54,66,49,58,57,47,77,48,67,39,75,76]
 subject_names = ["Foundation","Art","Biology","Business and Law","Chemistry","Civil Engineering","Early Years","Media","Design Technology","Distance Learning","Engineering","Computing","Health","Materials Research","Mathematics","Off Campus Overseas ","Off Campus UK","Psychology","Renewable Energy","Sport","Education","English","Top-up","University-wide"]
@@ -25,10 +25,22 @@ for subject in subjects:
 		for attendance in attendances:
 			payload = {'SubjectAreaID': subject, 'StudyLevelID': level, 'AttendenceID': attendance}
 			r = requests.post("http://courses.bolton.ac.uk/", data=payload)
-			print("Getting (" + str(subject) + "," + str(level) + "," + str(attendance) + ")")
-			tree = lxml.html.fromstring(r.text)
-		        paragraphs = tree.xpath('//a/text()')
-			#81>a.length
-			for x in range(81,len(paragraphs)):
-				json_string+='''{"name": "''' + paragraphs[x] + '''","size":20}'''
+			print(r.text)
 json_string+="]}]}]}]}"
+#remove the last comma
+json_string = json_string[:-1]
+
+#close the json string
+json_string += "]}"
+
+#remove invalid chars
+out = ''.join([x for x in json_string if ord(x) < 128])
+out = out.rstrip('\r\n')
+out = re.sub( '\s+', ' ', out ).strip()
+
+#print the json string
+print(json_string)
+
+#write the json to a file
+with open('by_subject.json', 'w') as file_:
+    file_.write(out)
