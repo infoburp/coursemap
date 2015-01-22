@@ -13,9 +13,6 @@ for num in range(1000, 9999):
         page = requests.get(url)
         #parse the html into a tree
 	tree = lxml.html.fromstring(page.text)
-        #extract the relevant data, adding it to the Module object
-        #module id
-        self.id = module_id
         titles = tree.xpath('//title/text()')
         title = titles[0]
         if title.find("Search For a Course") == -1:
