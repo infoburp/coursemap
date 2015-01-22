@@ -199,7 +199,7 @@ for page_number in range (1, 78):
 #stitch together json modules under a root "course name" node
 json_string = '''{"name":"''' + course_title + '''","children":['''
 
-number_of_modules = str(len(module_codes)))
+number_of_modules = str(len(module_codes))
 print("Total number of modules: " + number_of_modules)
 
 module_number = 1
