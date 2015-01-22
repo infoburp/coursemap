@@ -26,8 +26,8 @@ for num in range(1, 1000):
         	print(title)
 	else:
         	print (url + "is not a course URL")
-        scrape_time = timeit.default_timer() - course_start
-	print("Course scrape took " + str(timeit.default_timer() - course_start + " (" + str(num) + "/1000)")
+        	scrape_time = timeit.default_timer() - course_start
+		print("Course scrape took " + str(timeit.default_timer() - course_start + " (" + str(num) + "/1000)")
 #remove the last comma
 out_json = courses_json[:-1]
 
