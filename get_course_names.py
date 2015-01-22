@@ -27,11 +27,9 @@ for num in range(1, 1000):
 	else:
         	print (url + "is not a course URL")
         scrape_time = timeit.default_timer() - course_start
-        total_scrape_time += scrape_time
 	print("Course scrape took " + str(timeit.default_timer() - course_start)
-	average_scrape_time = total_scrape_time / num
 	remaining_courses = 1000 - num
-	print(remaining_courses + " remaining to scrape, guestimated time remaining " + (remaining_courses * average_scape_time) + " seconds")
+	print(remaining_courses + " remaining to scrape, guestimated time remaining " + (remaining_courses * scrape_time) + " seconds")
 #remove the last comma
 courses_json = courses_json[:-1]
 
